@@ -34,7 +34,19 @@ function App() {
                 </div>
                 <div className="leftbar__copyright">Copyright, SportSee 2020</div>
             </div>
-            <div className="content">Content</div>
+            <div className="content">
+                <div className="content__greetings">
+                    <p className="hello">Bonjour <span className="firstname">Thomas</span></p>
+                    <p className="encouragement">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+                </div>
+                <div className="content__graphs">
+                    <div className="content__graphs--dailyActivity"></div>
+                    <div className="content__graphs--stats"></div>
+                    <div className="content__graphs--averageSessions"></div>
+                    <div className="content__graphs--categories"></div>
+                    <div className="content__graphs--score"></div>
+                </div>
+            </div>
         </main>
     </>
   )
