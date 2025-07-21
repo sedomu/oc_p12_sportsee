@@ -18,12 +18,14 @@ export default function useFetch({ userId, url = null, mocked = false}: Props) {
 
     useEffect(():any => {
         if (mocked){
-            useNormalisedData(
+            const result = useNormalisedData(
                 filterUser(USER_MAIN_DATA, userId),
                 filterUser(USER_ACTIVITY, userId),
                 filterUser(USER_AVERAGE_SESSIONS, userId),
                 filterUser(USER_PERFORMANCE, userId)
                 )
+
+            setData(result)
         }
     }, []);
 
