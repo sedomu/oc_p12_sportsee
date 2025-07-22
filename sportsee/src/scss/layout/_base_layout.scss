@@ -73,8 +73,6 @@ main {
   }
 
   .content{
-    background-color: magenta;
-
     flex: 1;
     padding: 64px 88px;
 
@@ -82,8 +80,6 @@ main {
     flex-direction: column;
 
     &__greetings {
-      background-color: yellow;
-
       height: 176px;
 
       & > .hello {
@@ -102,15 +98,13 @@ main {
     }
 
     &__graphs {
-      background-color: blue;
-
       flex: 1;
 
       display: grid;
       grid-template-columns: repeat(12, 1fr);
 
       &--dailyActivity {
-        background-color: red;
+        //background-color: magenta;
         grid-column: 1 / 10;
         grid-row: 1 / 2;
       }

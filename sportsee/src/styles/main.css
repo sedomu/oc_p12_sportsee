@@ -113,14 +113,12 @@ main .leftbar__copyright {
   writing-mode: sideways-lr;
 }
 main .content {
-  background-color: magenta;
   flex: 1;
   padding: 64px 88px;
   display: flex;
   flex-direction: column;
 }
 main .content__greetings {
-  background-color: yellow;
   height: 176px;
 }
 main .content__greetings > .hello {
@@ -135,13 +133,11 @@ main .content__greetings > .encouragement {
   font-size: 1.125rem;
 }
 main .content__graphs {
-  background-color: blue;
   flex: 1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
 main .content__graphs--dailyActivity {
-  background-color: red;
   grid-column: 1/10;
   grid-row: 1/2;
 }

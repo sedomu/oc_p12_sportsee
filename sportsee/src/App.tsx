@@ -1,11 +1,15 @@
 import "./styles/main.css"
 import useFetch from './hooks/useFetch'
+import DailyActivityGraph from "./components/DailyActivityGraph.tsx";
+import {useRef} from "react";
 
 function App() {
 
 
-    const data = useFetch({userId: 18, mocked: true})
-    console.log(data)
+    const data = useFetch({userId: 12, mocked: true})
+
+    const dailyActivity = useRef(null);
+    const autre = useRef(null);
 
   
   return (
@@ -36,13 +40,17 @@ function App() {
             </div>
             <div className="content">
                 <div className="content__greetings">
-                    <p className="hello">Bonjour <span className="firstname">Thomas</span></p>
+                    <p className="hello">Bonjour <span className="firstname">{data && data.firstName}</span></p>
                     <p className="encouragement">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
                 </div>
                 <div className="content__graphs">
-                    <div className="content__graphs--dailyActivity"></div>
+                    <div ref={dailyActivity} className="content__graphs--dailyActivity">
+                        {data && dailyActivity && <DailyActivityGraph data={data.lastSessions} width={dailyActivity.current.offsetWidth} height={dailyActivity.current.offsetHeight}/>}
+                    </div>
                     <div className="content__graphs--stats"></div>
-                    <div className="content__graphs--averageSessions"></div>
+                    <div ref={autre} className="content__graphs--averageSessions">
+                        {data && autre && <DailyActivityGraph data={data.lastSessions} width={autre.current.offsetWidth} height={autre.current.offsetHeight}/>}
+                    </div>
                     <div className="content__graphs--categories"></div>
                     <div className="content__graphs--score"></div>
                 </div>
