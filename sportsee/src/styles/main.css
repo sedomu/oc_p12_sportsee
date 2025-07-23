@@ -138,6 +138,7 @@ main .content__graphs {
   grid-template-columns: repeat(12, 1fr);
 }
 main .content__graphs--dailyActivity {
+  background-color: magenta;
   grid-column: 1/10;
   grid-row: 1/2;
 }

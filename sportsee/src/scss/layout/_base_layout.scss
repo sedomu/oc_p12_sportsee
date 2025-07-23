@@ -104,7 +104,7 @@ main {
       grid-template-columns: repeat(12, 1fr);
 
       &--dailyActivity {
-        //background-color: magenta;
+        background-color: magenta;
         grid-column: 1 / 10;
         grid-row: 1 / 2;
       }

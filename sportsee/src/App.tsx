@@ -1,15 +1,16 @@
 import "./styles/main.css"
 import useFetch from './hooks/useFetch'
 import DailyActivityGraph from "./components/DailyActivityGraph.tsx";
-import {useRef} from "react";
+import {type JSX, type Ref, type RefObject, useRef} from "react";
 
 function App() {
 
 
     const data = useFetch({userId: 12, mocked: true})
 
-    const dailyActivity = useRef(null);
-    const autre = useRef(null);
+    const dailyActivity: RefObject<JSX.Element> = useRef(<div>init - pour éviter un possible null...</div>);
+    const autre = useRef("init - pour éviter un possible null...");
+    // Je vais me séparer de ces variables plus haut: utiliser le composant natif de recharts (ResponsiveContainer)
 
   
   return (
@@ -45,7 +46,7 @@ function App() {
                 </div>
                 <div className="content__graphs">
                     <div ref={dailyActivity} className="content__graphs--dailyActivity">
-                        {data && dailyActivity && <DailyActivityGraph data={data.lastSessions} width={dailyActivity.current.offsetWidth} height={dailyActivity.current.offsetHeight}/>}
+                        {data && <DailyActivityGraph data={data.lastSessions} width={dailyActivity.current.offsetWidth} height={dailyActivity.current.offsetHeight}/>}
                     </div>
                     <div className="content__graphs--stats"></div>
                     <div ref={autre} className="content__graphs--averageSessions">
