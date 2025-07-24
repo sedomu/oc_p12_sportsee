@@ -136,6 +136,7 @@ main .content__graphs {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 24px;
 }
 main .content__graphs > * {
@@ -155,12 +156,13 @@ main .content__graphs--stats {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: 40px;
 }
 main .content__graphs--averageSessions {
-  background-color: purple;
+  background-color: #FF0000;
   grid-column: 1/4;
   grid-row: 2/3;
+  padding: 24px;
 }
 main .content__graphs--categories {
   background-color: orange;
@@ -213,6 +215,10 @@ main .content__graphs--score {
   color: #74798C;
   font-size: 0.875rem;
   line-height: 1.5rem;
+}
+
+.content__graphs--averageSessions-title {
+  color: #20253A;
 }
 
 /*# sourceMappingURL=main.css.map */

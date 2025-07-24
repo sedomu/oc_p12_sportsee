@@ -104,6 +104,7 @@ main {
 
       display: grid;
       grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, 1fr);
       gap: 24px;
 
       & > * {
@@ -127,14 +128,16 @@ main {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        gap: 24px;
+        gap: 40px;
 
       }
 
       &--averageSessions {
-        background-color: purple;
+        background-color: colours.$red-graph;
         grid-column: 1 / 4;
         grid-row: 2 / 3;
+
+        padding: 24px;
       }
 
       &--categories {

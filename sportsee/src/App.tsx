@@ -3,13 +3,14 @@ import useFetch from './hooks/useFetch'
 import DailyActivityGraph from "./components/DailyActivityGraph.tsx";
 import {type JSX, type Ref, type RefObject, useRef} from "react";
 import StatsGraph from "./components/StatsGraph.tsx";
+import AverageSessions from "./components/AverageSessions.tsx";
 
 function App() {
 
 
     const data = useFetch({userId: 12, mocked: true})
 
-    console.log(data)
+    // console.log(data)
 
     return (
         <>
@@ -66,7 +67,7 @@ function App() {
                         </div>
                         <div className="content__graphs--averageSessions">
                             {data &&
-                              <DailyActivityGraph data={data.lastSessions}/>}
+                              <AverageSessions data={data.averageSessions}/>}
                         </div>
                         <div className="content__graphs--categories"></div>
                         <div className="content__graphs--score"></div>
