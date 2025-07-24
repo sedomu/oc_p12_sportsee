@@ -1,10 +1,12 @@
+@use "../utils/colours";
+
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
 
 .header__menu {
-  background-color: $black-background;
+  background-color: colours.$black-background;
 
   height: 88px;
   padding: 24px 88px 24px 16px;
@@ -12,7 +14,7 @@ body {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 
   & ul {
-    color: $white-point;
+    color: colours.$white-point;
     font-weight: 500;
     font-size: 1.5rem;
 
@@ -34,12 +36,17 @@ main {
   & .leftbar{
     position: relative;
 
-    background-color: $black-background;
-    width: 120px;
+    background-color: colours.$black-background;
+    width: 12px;
     height: calc(100vh - 88px);
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
     &__badges{
-      color: $white-point;
+      color: colours.$white-point;
 
       height: 100%;
       display: flex;
@@ -57,16 +64,11 @@ main {
       }
 
     }
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
 
     &__copyright {
       position: absolute;
       bottom: 56px;
-      color: $white-point;
+      color: colours.$white-point;
       font-size: 0.75rem;
       writing-mode: sideways-lr;
     }
@@ -88,7 +90,7 @@ main {
         font-weight: 500;
 
         & > .firstname {
-          color: $orange-text;
+          color: colours.$orange-text;
         }
       }
 
@@ -102,11 +104,19 @@ main {
 
       display: grid;
       grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+
+      & > * {
+        border-radius: 8px;
+        overflow: hidden;
+      }
 
       &--dailyActivity {
-        background-color: magenta;
+        background-color: colours.$grey-background;
         grid-column: 1 / 10;
         grid-row: 1 / 2;
+
+        padding: 24px;
       }
 
       &--stats {

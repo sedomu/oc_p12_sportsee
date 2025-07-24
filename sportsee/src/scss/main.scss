@@ -1,7 +1,7 @@
-@import "base/reset";
+@use "base/reset";
 
-@import "utils/colours";
+@use "utils/colours";
 
-@import "layout/base_layout";
+@use "layout/base_layout";
 
-@import "components/graphs";
+@use "components/graphs";

@@ -8,10 +8,6 @@ function App() {
 
     const data = useFetch({userId: 12, mocked: true})
 
-    const dailyActivity: RefObject<JSX.Element> = useRef(<div>init - pour éviter un possible null...</div>);
-    const autre = useRef("init - pour éviter un possible null...");
-    // Je vais me séparer de ces variables plus haut: utiliser le composant natif de recharts (ResponsiveContainer)
-
   
   return (
     <>
@@ -45,12 +41,12 @@ function App() {
                     <p className="encouragement">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
                 </div>
                 <div className="content__graphs">
-                    <div ref={dailyActivity} className="content__graphs--dailyActivity">
-                        {data && <DailyActivityGraph data={data.lastSessions} width={dailyActivity.current.offsetWidth} height={dailyActivity.current.offsetHeight}/>}
+                    <div className="content__graphs--dailyActivity">
+                        {data && <DailyActivityGraph data={data.lastSessions}/>}
                     </div>
                     <div className="content__graphs--stats"></div>
-                    <div ref={autre} className="content__graphs--averageSessions">
-                        {data && autre && <DailyActivityGraph data={data.lastSessions} width={autre.current.offsetWidth} height={autre.current.offsetHeight}/>}
+                    <div className="content__graphs--averageSessions">
+                        {data && <DailyActivityGraph data={data.lastSessions}/>}
                     </div>
                     <div className="content__graphs--categories"></div>
                     <div className="content__graphs--score"></div>

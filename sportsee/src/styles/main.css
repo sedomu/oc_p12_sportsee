@@ -83,7 +83,7 @@ main {
 main .leftbar {
   position: relative;
   background-color: #020203;
-  width: 120px;
+  width: 12px;
   height: calc(100vh - 88px);
   display: flex;
   flex-direction: column;
@@ -136,11 +136,17 @@ main .content__graphs {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+main .content__graphs > * {
+  border-radius: 8px;
+  overflow: hidden;
 }
 main .content__graphs--dailyActivity {
-  background-color: magenta;
+  background-color: #FBFBFB;
   grid-column: 1/10;
   grid-row: 1/2;
+  padding: 24px;
 }
 main .content__graphs--stats {
   background-color: green;
@@ -161,6 +167,25 @@ main .content__graphs--score {
   background-color: yellow;
   grid-column: 7/10;
   grid-row: 2/3;
+}
+
+.content__graphs--dailyActivity-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #20253A;
+}
+.content__graphs--dailyActivity-title > ul {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  color: #74798C;
+  font-size: 0.874rem;
+}
+.content__graphs--dailyActivity-title > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /*# sourceMappingURL=main.css.map */

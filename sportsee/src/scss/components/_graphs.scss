@@ -1,0 +1,22 @@
+@use "../utils/colours";
+
+.content__graphs--dailyActivity-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: colours.$black-graphLabel;
+
+  & > ul {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    color: colours.$grey-graphLabel;
+    font-size: 0.874rem;
+
+    & > li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
