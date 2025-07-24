@@ -20,3 +20,32 @@
     }
   }
 }
+
+.content__graphs--stats {
+  &-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 24px;
+    background-color: colours.$grey-background;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &-data{
+    &-figure{
+      color: colours.$black-dataLabel;
+      font-weight: 700;
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+    }
+    &-intake {
+      color: colours.$grey-graphLabel;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+    }
+  }
+}
