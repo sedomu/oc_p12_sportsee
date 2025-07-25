@@ -159,10 +159,11 @@ main .content__graphs--stats {
   gap: 40px;
 }
 main .content__graphs--averageSessions {
+  position: relative;
   background-color: #FF0000;
   grid-column: 1/4;
   grid-row: 2/3;
-  padding: 24px;
+  padding: 24px 24px 24px 24px;
 }
 main .content__graphs--categories {
   background-color: orange;
@@ -217,8 +218,16 @@ main .content__graphs--score {
   line-height: 1.5rem;
 }
 
-.content__graphs--averageSessions-title {
-  color: #20253A;
+.content__graphs--averageSessions {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.content__graphs--averageSessions-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /*# sourceMappingURL=main.css.map */

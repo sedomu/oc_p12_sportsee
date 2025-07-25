@@ -8,9 +8,12 @@ import {
     XAxis,
     YAxis
 } from "recharts";
+import {useEffect, useState} from "react";
 
 export default function AverageSessions({data}) {
     const dayKeys = ["L", "Ma", "Me", "J", "V", "S", "D"]
+
+
 
     for (let i = 0; i < data.length; i++) {
         data[i].dataKey = dayKeys[i]
@@ -35,26 +38,36 @@ export default function AverageSessions({data}) {
         return null;
     };
 
+    const handleMouseMove = (activeDot) => {
+        if (activeDot) {
+            const overlay = document.querySelector(".content__graphs--averageSessions-overlay")
+            const activeDotX = (Number(activeDot.getAttribute("cx")) + 24).toString() + "px"
+            console.log(activeDotX)
+            overlay.style.left = activeDotX
+        }
+    }
+
     const MyChart = () => (
         <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{top: 16, right: 16, left: 16, bottom: 40}} >
+            <LineChart data={data} margin={{top: 16, right: 8, left: 8, bottom: 40}} onMouseMove={() => {handleMouseMove(document.getElementById("AverageSessionsActiveDot"))}}>
 
                 <defs>
                     <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
                         <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.4" />
-                        <stop offset="75%" stopColor="#FFFFFF" stopOpacity="1" />
+                        {/*<stop offset="75%" stopColor="#FFFFFF" stopOpacity="1" />*/}
                         <stop offset="100%" stopColor="#FFFFFF" stopOpacity="1" />
                     </linearGradient>
                 </defs>
 
-                <XAxis dataKey={(v) => v.dataKey} tickFormatter={(vl) => vl[0]} axisLine={false} tickLine={false} tickMargin={16} />
+                <XAxis dataKey={(v) => v.dataKey} tickFormatter={(vl) => vl[0]} axisLine={false} tickLine={false} tickMargin={16} tick={{ fill: colours.whiteTransparentText }} />
                 <Line type="monotone" dataKey="sessionLength" stroke="url(#lineGradient)" strokeWidth={2} dot={false} activeDot={{r: 4, fill: colours.whitePoint, strokeWidth: 8, strokeOpacity: 0.2, id: "AverageSessionsActiveDot"}} />
-                <Tooltip content={<CustomTooltip/>}/>
+                <Tooltip content={<CustomTooltip/>} cursor={false}/>
             </LineChart>
         </ResponsiveContainer>
     )
 
     return <>
+        <div className={"content__graphs--averageSessions-overlay"}></div>
         <div className="content__graphs--averageSessions-title">
             <div>Durée moyenne des sessions</div>
         </div>

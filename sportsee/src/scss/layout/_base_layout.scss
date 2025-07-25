@@ -133,11 +133,12 @@ main {
       }
 
       &--averageSessions {
+        position:relative;
         background-color: colours.$red-graph;
         grid-column: 1 / 4;
         grid-row: 2 / 3;
 
-        padding: 24px;
+        padding: 24px 24px 24px 24px;
       }
 
       &--categories {

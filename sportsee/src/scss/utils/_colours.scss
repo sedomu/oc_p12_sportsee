@@ -1,6 +1,8 @@
 $black-point: #000000;
 $black-background: #020203;
 
+$black-overlay: rgba(0, 0, 0, 0.1);
+
 $black-dataLabel: #282D30;
 $black-graphLabel: #20253A;
 $grey-graphLabel: #74798C;
@@ -10,5 +12,7 @@ $grey-background: #FBFBFB;
 $orange-text: #ff0101;
 
 $red-graph: #FF0000;
+
+$white-transparentText: rgba(255,255,255,0.5);
 
 $white-point: #ffffff;

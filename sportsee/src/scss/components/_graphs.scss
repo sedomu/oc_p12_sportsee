@@ -50,6 +50,14 @@
   }
 }
 
-.content__graphs--averageSessions-title {
-  color: colours.$black-graphLabel;
+.content__graphs--averageSessions {
+  color: colours.$white-transparentText;
+}
+
+.content__graphs--averageSessions-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: colours.$black-overlay;
 }

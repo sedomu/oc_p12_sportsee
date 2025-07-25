@@ -10,5 +10,7 @@ export const colours = {
     orange: "#E60000",
     redTootltip: "#E60000",
 
+    whiteTransparentText: "rgba(255,255,255,0.5)",
+
     whitePoint: "#FFFFFF"
 }
