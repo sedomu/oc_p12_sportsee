@@ -171,7 +171,8 @@ main .content__graphs--skills {
   grid-row: 2/3;
 }
 main .content__graphs--score {
-  background-color: yellow;
+  position: relative;
+  background-color: #FBFBFB;
   grid-column: 7/10;
   grid-row: 2/3;
 }
@@ -228,6 +229,34 @@ main .content__graphs--score {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.content__graphs--score-title {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  color: #74798C;
+  text-align: center;
+}
+.content__graphs--score-title-figure {
+  color: #282D30;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.content__graphs--score-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.content__graphs--score-circle > svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /*# sourceMappingURL=main.css.map */

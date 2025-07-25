@@ -148,7 +148,8 @@ main {
       }
 
       &--score {
-        background-color: yellow;
+        position: relative;
+        background-color: colours.$grey-background;
         grid-column: 7 / 10;
         grid-row: 2 / 3;
       }

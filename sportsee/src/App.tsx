@@ -5,6 +5,7 @@ import {type JSX, type Ref, type RefObject, useRef} from "react";
 import StatsGraph from "./components/StatsGraph.tsx";
 import AverageSessions from "./components/AverageSessions.tsx";
 import SkillsRadar from "./components/SkillsRadar.tsx";
+import ScoreGraph from "./components/ScoreGraph.tsx";
 
 function App() {
 
@@ -75,7 +76,11 @@ function App() {
                                 <SkillsRadar skillsKind={data.skillsKind} skillsData={data.skillsData}/>
                             }
                         </div>
-                        <div className="content__graphs--score"></div>
+                        <div className="content__graphs--score">
+                            {data &&
+                                <ScoreGraph score={data.score} />
+                            }
+                        </div>
                     </div>
                 </div>
             </main>

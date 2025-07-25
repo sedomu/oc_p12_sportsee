@@ -61,3 +61,38 @@
   bottom: 0;
   background-color: colours.$black-overlay;
 }
+
+.content__graphs--score {
+  &-title{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    color: colours.$grey-graphLabel;
+    text-align: center;
+
+    &-figure{
+      color: colours.$black-dataLabel;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+  }
+
+  &-circle{
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    > svg {
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
