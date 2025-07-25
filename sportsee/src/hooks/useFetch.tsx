@@ -1,35 +1,53 @@
-// @ts-ignore
-import {USER_MAIN_DATA, USER_AVERAGE_SESSIONS, USER_ACTIVITY, USER_PERFORMANCE} from "../data/mocked-data.js";
-import {useState, useEffect} from "react";
-import useNormalisedData from "./useNormalisedData.tsx"
+import {
+    USER_MAIN_DATA,
+    USER_AVERAGE_SESSIONS,
+    USER_ACTIVITY,
+    USER_PERFORMANCE
+} from "../data/mocked-data";
+import { useState, useEffect } from "react";
+import useNormalisedData, {
+    type NormalisedData
+} from "./useNormalisedData";
+
 
 type Props = {
-    userId: number,
-    url?: string | null,
-    mocked?: boolean,
+    userId: number;
+    url?: string | null;
+    mocked?: boolean;
+};
+
+// Type générique pour les objets utilisateurs
+type UserLike = { id?: number; userId?: number };
+
+// filterUser retourne un élément ou undefined si non trouvé
+function filterUser<T extends UserLike>(data: T[], userId: number): T | undefined {
+    return data.find(user => user.id === userId || user.userId === userId);
 }
 
-function filterUser(data, userId) {
-    return data.filter(user => user.id === userId || user.userId === userId)[0]
-}
+export function useFetch({
+                             userId,
+                             url = null,
+                             mocked = false
+                         }: Props): NormalisedData | null {
+    const [data, setData] = useState<NormalisedData | null>(null);
 
-export default function useFetch({ userId, url = null, mocked = false}: Props) {
-    const [data, setData] = useState(null)
+    console.log("useFetch : ", userId, url, mocked);
 
-    useEffect(():any => {
-        if (mocked){
-            const result = useNormalisedData(
-                filterUser(USER_MAIN_DATA, userId),
-                filterUser(USER_ACTIVITY, userId),
-                filterUser(USER_AVERAGE_SESSIONS, userId),
-                filterUser(USER_PERFORMANCE, userId)
-                )
+    useEffect(() => {
+        if (mocked) {
+            const main = filterUser(USER_MAIN_DATA, userId);
+            const activity = filterUser(USER_ACTIVITY, userId);
+            const sessions = filterUser(USER_AVERAGE_SESSIONS, userId);
+            const performance = filterUser(USER_PERFORMANCE, userId);
 
-            setData(result)
+            if (main && activity && sessions && performance) {
+                const result = useNormalisedData(main, activity, sessions, performance);
+                setData(result);
+            } else {
+                console.warn("Données manquantes pour l'utilisateur", userId);
+            }
         }
-    }, []);
+    }, [mocked, userId]);
 
-
-
-    return data
+    return data;
 }

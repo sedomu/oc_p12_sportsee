@@ -1,18 +1,45 @@
 import "./styles/main.css"
-import useFetch from './hooks/useFetch'
+import {useFetch} from './hooks/useFetch'
 import DailyActivityGraph from "./components/DailyActivityGraph.tsx";
-import {type JSX, type Ref, type RefObject, useRef} from "react";
 import StatsGraph from "./components/StatsGraph.tsx";
 import AverageSessions from "./components/AverageSessions.tsx";
 import SkillsRadar from "./components/SkillsRadar.tsx";
 import ScoreGraph from "./components/ScoreGraph.tsx";
 
+type data = {
+    firstName: string,
+    calories: number,
+    protein: number,
+    carbohydrate: number,
+    lipid: number,
+    lastSessions: {
+        day: string,
+        kilogram: number,
+        calories: number,
+        dataKey?: number | undefined
+    }[],  // Ajout des crochets pour indiquer un tableau
+    averageSessions: {
+        day: number,
+        sessionLength: number
+    }[],  // Ajout du type averageSessions
+    skillsKind: {
+        [key: number]: string
+    },    // Ajout du type skillsKind
+    skillsData: {
+        value: number,
+        kind: number
+    }[],  // Ajout du type skillsData
+    score: number  // Ajout du type score
+}
+
+
 function App() {
+    const data: data | null = useFetch({userId: 12, mocked: true})
 
-
-    const data = useFetch({userId: 12, mocked: true})
-
-    console.log(data)
+    // Early return si data est null
+    if (!data) {
+        return <div>Chargement...</div>
+    }
 
     return (
         <>
@@ -51,7 +78,7 @@ function App() {
                 <div className="content">
                     <div className="content__greetings">
                         <p className="hello">Bonjour <span
-                            className="firstname">{data && data.firstName}</span>
+                            className="firstname">{data.firstName}</span>
                         </p>
                         <p className="encouragement">Félicitation ! Vous avez
                             explosé vos objectifs hier 👏</p>
@@ -59,7 +86,7 @@ function App() {
                     <div className="content__graphs">
                         <div className="content__graphs--dailyActivity">
                             {data &&
-                              <DailyActivityGraph data={data.lastSessions}/>}
+                              <DailyActivityGraph lastSessions={data.lastSessions}/>}
                         </div>
                         <div className="content__graphs--stats">
                             <StatsGraph iconSrc={"./assets/calories-icon.svg"} figure={data && data.calories} unit={"kCal"} intakeText={"Calories"}/>
@@ -69,7 +96,7 @@ function App() {
                         </div>
                         <div className="content__graphs--averageSessions">
                             {data &&
-                              <AverageSessions data={data.averageSessions}/>}
+                              <AverageSessions averageSessions={data.averageSessions}/>}
                         </div>
                         <div className="content__graphs--skills">
                             {data &&

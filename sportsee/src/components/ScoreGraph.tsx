@@ -6,7 +6,11 @@ import {
 } from "recharts";
 import {colours} from "./colours.ts";
 
-export default function ScoreGraph({score}) {
+type Props = {
+    score: number,
+}
+
+export default function ScoreGraph({score}: Props) {
     const formattedScore = [
         {
             "value": score,

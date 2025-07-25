@@ -1,22 +1,25 @@
 import {
     Bar,
     BarChart,
-    CartesianGrid,
-    Label,
-    Legend, ResponsiveContainer, Tooltip,
+    CartesianGrid, ResponsiveContainer, Tooltip,
     XAxis,
     YAxis
 } from "recharts";
 import { colours } from "./colours";
 
 type Props = {
-    data: any
+    lastSessions: {
+        day: string,
+        kilogram: number,
+        calories: number,
+        dataKey?: number | undefined // Optional car ajouté dans la fonction
+    }[]
 }
 
-export default function DailyActivityGraph({data}: Props) {
+export default function DailyActivityGraph({lastSessions}: Props) {
 
-    for (let i = 0; i < data.length; i++) {
-        data[i].dataKey = i + 1;
+    for (let i = 0; i < lastSessions.length; i++) {
+        lastSessions[i].dataKey = i + 1;
     }
 
     const CustomTooltip = ({ active, payload }: any) => {
@@ -42,7 +45,7 @@ export default function DailyActivityGraph({data}: Props) {
 
     const MyChart = () => (
         <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data} margin={{top: 32, right: 0, left: 0, bottom: 32}} syncId="anyId" barGap={8} barSize={8}>
+            <BarChart data={lastSessions} margin={{top: 32, right: 0, left: 0, bottom: 32}} syncId="anyId" barGap={8} barSize={8}>
                 <XAxis dataKey="dataKey" tickLine={false} stroke={colours.greyText} tickMargin={24}/>
                 <YAxis yAxisId="right" stroke={colours.greyText} orientation="right" dataKey="kilogram" domain={["dataMin - 2", "dataMax + 2"]} allowDecimals={false} tickLine={false} axisLine={false} interval={0} tickMargin={32}/>
                 <CartesianGrid horizontal={true} vertical={false} stroke={colours.greyGrid} strokeDasharray="2 2" strokeWidth={"1px"} syncWithTicks={true}/>

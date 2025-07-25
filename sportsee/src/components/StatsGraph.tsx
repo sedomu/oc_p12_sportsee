@@ -1,4 +1,11 @@
-export default function StatsGraph({iconSrc, figure, unit, intakeText}) {
+type Props = {
+    iconSrc: string,
+    figure: number,
+    unit: string,
+    intakeText: string,
+}
+
+export default function StatsGraph({iconSrc, figure, unit, intakeText}: Props) {
     const figureText = new Intl.NumberFormat('en-EN').format(figure) + unit
 
     return <>

@@ -1,22 +1,27 @@
 import {colours} from "./colours.ts";
 import {
-    Bar,
-    BarChart,
-    CartesianGrid, Line, LineChart,
+ Line, LineChart,
     ResponsiveContainer,
     Tooltip,
-    XAxis,
-    YAxis
+    XAxis
 } from "recharts";
-import {useEffect, useState} from "react";
 
-export default function AverageSessions({data}) {
+type Props = {
+    averageSessions: {
+        day: number,
+        sessionLength: number,
+        dataKey?: string
+    }[]
+}
+
+export default function AverageSessions({averageSessions}: Props) {
     const dayKeys = ["L", "Ma", "Me", "J", "V", "S", "D"]
 
+    console.log(averageSessions)
 
 
-    for (let i = 0; i < data.length; i++) {
-        data[i].dataKey = dayKeys[i]
+    for (let i = 0; i < averageSessions.length; i++) {
+        averageSessions[i].dataKey = dayKeys[i]
     }
 
     const CustomTooltip = ({ active, payload }: any) => {
@@ -38,18 +43,17 @@ export default function AverageSessions({data}) {
         return null;
     };
 
-    const handleMouseMove = (activeDot) => {
+    const handleMouseMove = (activeDot: HTMLElement | null) => {
         if (activeDot) {
-            const overlay = document.querySelector(".content__graphs--averageSessions-overlay")
+            const overlay: HTMLDivElement | null = document.querySelector(".content__graphs--averageSessions-overlay")
             const activeDotX = (Number(activeDot.getAttribute("cx")) + 24).toString() + "px"
-            console.log(activeDotX)
-            overlay.style.left = activeDotX
+            overlay ? overlay.style.left = activeDotX : null
         }
     }
 
     const MyChart = () => (
         <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{top: 16, right: 8, left: 8, bottom: 40}} onMouseMove={() => {handleMouseMove(document.getElementById("AverageSessionsActiveDot"))}}>
+            <LineChart data={averageSessions} margin={{top: 16, right: 8, left: 8, bottom: 40}} onMouseMove={() => {handleMouseMove(document.getElementById("AverageSessionsActiveDot"))}}>
 
                 <defs>
                     <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">

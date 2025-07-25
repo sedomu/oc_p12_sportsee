@@ -1,15 +1,23 @@
 import { colours } from "./colours";
-
 import {
-    Legend,
     PolarAngleAxis,
-    PolarGrid,
-    PolarRadiusAxis, Radar,
+    PolarGrid, Radar,
     RadarChart, ResponsiveContainer
 } from "recharts";
 
-export default function SkillsRadar({skillsKind, skillsData}) {
-    const skillsKindToFrench = {
+type Props = {
+    skillsKind: {
+        [key: number]: string,
+    },
+    skillsData:
+        {
+            value: number,
+            kind: number
+        }[]
+}
+
+export default function SkillsRadar({skillsKind, skillsData}: Props) {
+    const skillsKindToFrench: { [key: string]: string } = {
         "cardio": "Cardio",
         "energy": "Énergie",
         "endurance": "Endurance",
