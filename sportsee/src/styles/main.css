@@ -233,6 +233,12 @@ main .content__graphs--score {
 
 .content__graphs--score-title {
   position: absolute;
+  top: 24px;
+  left: 24px;
+  color: #20253A;
+}
+.content__graphs--score-text {
+  position: absolute;
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
@@ -240,7 +246,7 @@ main .content__graphs--score {
   color: #74798C;
   text-align: center;
 }
-.content__graphs--score-title-figure {
+.content__graphs--score-text-figure {
   color: #282D30;
   font-weight: 700;
   font-size: 1.5rem;

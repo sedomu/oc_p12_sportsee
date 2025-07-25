@@ -65,6 +65,13 @@
 .content__graphs--score {
   &-title{
     position: absolute;
+    top: 24px;
+    left: 24px;
+    color: colours.$black-graphLabel;
+  }
+
+  &-text{
+    position: absolute;
     width: 100%;
     top: 50%;
     transform: translateY(-50%);

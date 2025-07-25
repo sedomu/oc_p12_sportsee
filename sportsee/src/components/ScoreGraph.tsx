@@ -23,8 +23,9 @@ export default function ScoreGraph({score}) {
     const scoreToPercent = String(Math.floor(score * 100)) + "%"
 
     return <>
-        <div className="content__graphs--score-title">
-            <span className="content__graphs--score-title-figure">{scoreToPercent}</span><br/>
+        <div className="content__graphs--score-title">Score</div>
+        <div className="content__graphs--score-text">
+            <span className="content__graphs--score-text-figure">{scoreToPercent}</span><br/>
             de votre<br/>objectif
         </div>
         <div className="content__graphs--score-circle">
