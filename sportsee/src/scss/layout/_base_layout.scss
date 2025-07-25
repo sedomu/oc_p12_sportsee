@@ -141,8 +141,8 @@ main {
         padding: 24px 24px 24px 24px;
       }
 
-      &--categories {
-        background-color: orange;
+      &--skills {
+        background-color: colours.$black-dataLabel;
         grid-column: 4 / 7;
         grid-row: 2 / 3;
       }

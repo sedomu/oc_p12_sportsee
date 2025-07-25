@@ -165,8 +165,8 @@ main .content__graphs--averageSessions {
   grid-row: 2/3;
   padding: 24px 24px 24px 24px;
 }
-main .content__graphs--categories {
-  background-color: orange;
+main .content__graphs--skills {
+  background-color: #282D30;
   grid-column: 4/7;
   grid-row: 2/3;
 }

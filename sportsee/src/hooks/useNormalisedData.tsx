@@ -72,10 +72,10 @@ type NormalisedData = {
             sessionLength: number
         }
     ],
-    performanceKind: {
+    skillsKind: {
         [key: number]: string,
     },
-    performanceData: [
+    skillsData: [
         {
             value: number,
             kind: number
@@ -102,7 +102,7 @@ export default function useNormalisedData(
         lipid: userMainData.keyData.lipidCount,
         lastSessions: userActivity.sessions,
         averageSessions: userAverageSessions.sessions,
-        performanceKind: userPerformance.kind,
-        performanceData: userPerformance.data
+        skillsKind: userPerformance.kind,
+        skillsData: userPerformance.data
     }
 }

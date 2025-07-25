@@ -4,13 +4,14 @@ import DailyActivityGraph from "./components/DailyActivityGraph.tsx";
 import {type JSX, type Ref, type RefObject, useRef} from "react";
 import StatsGraph from "./components/StatsGraph.tsx";
 import AverageSessions from "./components/AverageSessions.tsx";
+import SkillsRadar from "./components/SkillsRadar.tsx";
 
 function App() {
 
 
     const data = useFetch({userId: 12, mocked: true})
 
-    // console.log(data)
+    console.log(data)
 
     return (
         <>
@@ -69,7 +70,11 @@ function App() {
                             {data &&
                               <AverageSessions data={data.averageSessions}/>}
                         </div>
-                        <div className="content__graphs--categories"></div>
+                        <div className="content__graphs--skills">
+                            {data &&
+                                <SkillsRadar skillsKind={data.skillsKind} skillsData={data.skillsData}/>
+                            }
+                        </div>
                         <div className="content__graphs--score"></div>
                     </div>
                 </div>
