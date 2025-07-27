@@ -47,7 +47,7 @@ function App() {
                 <nav className="header__menu">
                     <ul>
                         <li><img className="header__logo"
-                                 src="./assets/logo.svg" alt="Sportsee logo"/>
+                                 src="/assets/logo.svg" alt="Sportsee logo"/>
                         </li>
                         <li>Accueil</li>
                         <li>Profil</li>
@@ -62,13 +62,13 @@ function App() {
                     <div className="leftbar__badges">
                         <ul>
                             <li><img className="leftbar__badges--icon"
-                                     src="./assets/badge_relaxation.svg"/></li>
+                                     src="/assets/badge_relaxation.svg"/></li>
                             <li><img className="leftbar__badges--icon"
-                                     src="./assets/badge_swim.svg"/></li>
+                                     src="/assets/badge_swim.svg"/></li>
                             <li><img className="leftbar__badges--icon"
-                                     src="./assets/badge_bike.svg"/></li>
+                                     src="/assets/badge_bike.svg"/></li>
                             <li><img className="leftbar__badges--icon"
-                                     src="./assets/badge_fitness.svg"/></li>
+                                     src="/assets/badge_fitness.svg"/></li>
                         </ul>
                     </div>
                     <div className="leftbar__copyright">Copyright, SportSee
@@ -89,10 +89,10 @@ function App() {
                               <DailyActivityGraph lastSessions={data.lastSessions}/>}
                         </div>
                         <div className="content__graphs--stats">
-                            <StatsGraph iconSrc={"./assets/calories-icon.svg"} figure={data && data.calories} unit={"kCal"} intakeText={"Calories"}/>
-                            <StatsGraph iconSrc={"./assets/protein-icon.svg"} figure={data && data.protein} unit={"g"} intakeText={"Protéines"}/>
-                            <StatsGraph iconSrc={"./assets/carbs-icon.svg"} figure={data && data.carbohydrate} unit={"g"} intakeText={"Glucides"}/>
-                            <StatsGraph iconSrc={"./assets/fat-icon.svg"} figure={data && data.lipid} unit={"g"} intakeText={"Lipides"}/>
+                            <StatsGraph iconSrc={"/assets/calories-icon.svg"} figure={data && data.calories} unit={"kCal"} intakeText={"Calories"}/>
+                            <StatsGraph iconSrc={"/assets/protein-icon.svg"} figure={data && data.protein} unit={"g"} intakeText={"Protéines"}/>
+                            <StatsGraph iconSrc={"/assets/carbs-icon.svg"} figure={data && data.carbohydrate} unit={"g"} intakeText={"Glucides"}/>
+                            <StatsGraph iconSrc={"/assets/fat-icon.svg"} figure={data && data.lipid} unit={"g"} intakeText={"Lipides"}/>
                         </div>
                         <div className="content__graphs--averageSessions">
                             {data &&
