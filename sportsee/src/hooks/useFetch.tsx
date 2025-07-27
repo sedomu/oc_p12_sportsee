@@ -1,53 +1,32 @@
-import {
-    USER_MAIN_DATA,
-    USER_AVERAGE_SESSIONS,
-    USER_ACTIVITY,
-    USER_PERFORMANCE
-} from "../data/mocked-data";
-import { useState, useEffect } from "react";
-import useNormalisedData, {
-    type NormalisedData
-} from "./useNormalisedData";
+import {useEffect, useState} from "react";
 
-
-type Props = {
-    userId: number;
-    url?: string | null;
-    mocked?: boolean;
-};
-
-// Type générique pour les objets utilisateurs
-type UserLike = { id?: number; userId?: number };
-
-// filterUser retourne un élément ou undefined si non trouvé
-function filterUser<T extends UserLike>(data: T[], userId: number): T | undefined {
-    return data.find(user => user.id === userId || user.userId === userId);
-}
-
-export function useFetch({
-                             userId,
-                             url = null,
-                             mocked = false
-                         }: Props): NormalisedData | null {
-    const [data, setData] = useState<NormalisedData | null>(null);
-
-    console.log("useFetch : ", userId, url, mocked);
+export default function useFetch(url: string){
+    const [loading, setLoading] = useState(true)
+    const [data, setData] = useState(null)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
-        if (mocked) {
-            const main = filterUser(USER_MAIN_DATA, userId);
-            const activity = filterUser(USER_ACTIVITY, userId);
-            const sessions = filterUser(USER_AVERAGE_SESSIONS, userId);
-            const performance = filterUser(USER_PERFORMANCE, userId);
+        (async () => {
+            try {
+                const response = await fetch(url);
 
-            if (main && activity && sessions && performance) {
-                const result = useNormalisedData(main, activity, sessions, performance);
-                setData(result);
-            } else {
-                console.warn("Données manquantes pour l'utilisateur", userId);
+                // ✅ Vérifie si la réponse HTTP est OK (status 200-299)
+                if (!response.ok) {
+                    throw new Error(`Erreur ${response.status} : ${response.statusText}`);
+                }
+
+                const json = await response.json();
+                setData(json);
+                setError(null);
+            } catch (error: any) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
             }
-        }
-    }, [mocked, userId]);
+        })().catch((e) => {
+            console.error("Erreur non attrapée :", e);
+        });
+    }, [url]);
 
-    return data;
+    return { loading, data, error }
 }

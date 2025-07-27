@@ -31,8 +31,6 @@ export default function SkillsRadar({skillsKind, skillsData}: Props) {
         kindToDisplay: skillsKindToFrench[skillsKind[skill.kind]]
     }));
 
-    console.log("formattedData : ", formattedData)
-
     return <>
         <ResponsiveContainer width="100%" height="100%">
             <RadarChart data={formattedData} margin={{right: 40, left: 40}}>

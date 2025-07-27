@@ -1,10 +1,12 @@
 import "./styles/main.css"
-import {useFetch} from './hooks/useFetch'
+import {useUserData} from './hooks/useUserData.tsx'
 import DailyActivityGraph from "./components/DailyActivityGraph.tsx";
 import StatsGraph from "./components/StatsGraph.tsx";
 import AverageSessions from "./components/AverageSessions.tsx";
 import SkillsRadar from "./components/SkillsRadar.tsx";
 import ScoreGraph from "./components/ScoreGraph.tsx";
+import {useEffect} from "react";
+import NotFound from "./NotFound.tsx";
 
 type data = {
     firstName: string,
@@ -32,14 +34,20 @@ type data = {
     score: number  // Ajout du type score
 }
 
+function App({userId}) {
+    const { loading, data, error } = useUserData({userId: userId, mocked: false})
 
-function App() {
-    const data: data | null = useFetch({userId: 12, mocked: true})
+    //Early return on error
+    if (error?.includes("404")) {
+        return <NotFound />;
+    }
 
     // Early return si data est null
     if (!data) {
         return <div>Chargement...</div>
     }
+
+
 
     return (
         <>

@@ -17,12 +17,10 @@ type Props = {
 export default function AverageSessions({averageSessions}: Props) {
     const dayKeys = ["L", "Ma", "Me", "J", "V", "S", "D"]
 
-    console.log(averageSessions)
-
-
-    for (let i = 0; i < averageSessions.length; i++) {
-        averageSessions[i].dataKey = dayKeys[i]
-    }
+    const sessionsWithKeys = averageSessions.map((session, index) => ({
+        ...session,
+        dataKey: dayKeys[index],
+    }));
 
     const CustomTooltip = ({ active, payload }: any) => {
         if (active && payload && payload.length) {
@@ -53,7 +51,7 @@ export default function AverageSessions({averageSessions}: Props) {
 
     const MyChart = () => (
         <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={averageSessions} margin={{top: 16, right: 8, left: 8, bottom: 40}} onMouseMove={() => {handleMouseMove(document.getElementById("AverageSessionsActiveDot"))}}>
+            <LineChart data={sessionsWithKeys} margin={{top: 16, right: 8, left: 8, bottom: 40}} onMouseMove={() => {handleMouseMove(document.getElementById("AverageSessionsActiveDot"))}}>
 
                 <defs>
                     <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">

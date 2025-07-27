@@ -8,7 +8,7 @@ function NotFound() {
                 <nav className="header__menu">
                     <ul>
                         <li><img className="header__logo"
-                                 src="./assets/logo.svg" alt="Sportsee logo"/>
+                                 src="/assets/logo.svg" alt="Sportsee logo"/>
                         </li>
                         <li>Accueil</li>
                         <li>Profil</li>
@@ -23,13 +23,13 @@ function NotFound() {
                     <div className="leftbar__badges">
                         <ul>
                             <li><img className="leftbar__badges--icon"
-                                     src="./assets/badge_relaxation.svg"/></li>
+                                     src="/assets/badge_relaxation.svg"/></li>
                             <li><img className="leftbar__badges--icon"
-                                     src="./assets/badge_swim.svg"/></li>
+                                     src="/assets/badge_swim.svg"/></li>
                             <li><img className="leftbar__badges--icon"
-                                     src="./assets/badge_bike.svg"/></li>
+                                     src="/assets/badge_bike.svg"/></li>
                             <li><img className="leftbar__badges--icon"
-                                     src="./assets/badge_fitness.svg"/></li>
+                                     src="/assets/badge_fitness.svg"/></li>
                         </ul>
                     </div>
                     <div className="leftbar__copyright">Copyright, SportSee

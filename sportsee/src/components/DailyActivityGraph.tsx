@@ -18,9 +18,11 @@ type Props = {
 
 export default function DailyActivityGraph({lastSessions}: Props) {
 
-    for (let i = 0; i < lastSessions.length; i++) {
-        lastSessions[i].dataKey = i + 1;
-    }
+    const sessionsWithKeys = lastSessions.map((session, index) => ({
+        ...session,
+        dataKey: index + 1
+    }));
+
 
     const CustomTooltip = ({ active, payload }: any) => {
         if (active && payload && payload.length) {
@@ -45,7 +47,7 @@ export default function DailyActivityGraph({lastSessions}: Props) {
 
     const MyChart = () => (
         <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={lastSessions} margin={{top: 32, right: 0, left: 0, bottom: 32}} syncId="anyId" barGap={8} barSize={8}>
+            <BarChart data={sessionsWithKeys} margin={{top: 32, right: 0, left: 0, bottom: 32}} syncId="anyId" barGap={8} barSize={8}>
                 <XAxis dataKey="dataKey" tickLine={false} stroke={colours.greyText} tickMargin={24}/>
                 <YAxis yAxisId="right" stroke={colours.greyText} orientation="right" dataKey="kilogram" domain={["dataMin - 2", "dataMax + 2"]} allowDecimals={false} tickLine={false} axisLine={false} interval={0} tickMargin={32}/>
                 <CartesianGrid horizontal={true} vertical={false} stroke={colours.greyGrid} strokeDasharray="2 2" strokeWidth={"1px"} syncWithTicks={true}/>
