@@ -1,32 +1,44 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
-export default function useFetch(url: string){
-    const [loading, setLoading] = useState(true)
-    const [data, setData] = useState(null)
-    const [error, setError] = useState(null)
+// Hook générique : le type T est le type des données JSON attendues
+export default function useFetch<T = any>(url: string) {
+    const [loading, setLoading] = useState<boolean>(true);
+    const [data, setData] = useState<T | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        let isCancelled = false;
+
         (async () => {
             try {
                 const response = await fetch(url);
 
-                // ✅ Vérifie si la réponse HTTP est OK (status 200-299)
                 if (!response.ok) {
                     throw new Error(`Erreur ${response.status} : ${response.statusText}`);
                 }
 
-                const json = await response.json();
-                setData(json);
-                setError(null);
-            } catch (error: any) {
-                setError(error.message);
+                const json: T = await response.json();
+
+                if (!isCancelled) {
+                    setData(json);
+                    setError(null);
+                }
+            } catch (err) {
+                if (!isCancelled) {
+                    setError(err instanceof Error ? err.message : String(err));
+                    setData(null);
+                }
             } finally {
-                setLoading(false);
+                if (!isCancelled) {
+                    setLoading(false);
+                }
             }
-        })().catch((e) => {
-            console.error("Erreur non attrapée :", e);
-        });
+        })();
+
+        return () => {
+            isCancelled = true; // pour éviter les fuites mémoire sur composants démontés
+        };
     }, [url]);
 
-    return { loading, data, error }
+    return { loading, data, error };
 }

@@ -5,37 +5,9 @@ import StatsGraph from "./components/StatsGraph.tsx";
 import AverageSessions from "./components/AverageSessions.tsx";
 import SkillsRadar from "./components/SkillsRadar.tsx";
 import ScoreGraph from "./components/ScoreGraph.tsx";
-import {useEffect} from "react";
 import NotFound from "./NotFound.tsx";
-
-type data = {
-    firstName: string,
-    calories: number,
-    protein: number,
-    carbohydrate: number,
-    lipid: number,
-    lastSessions: {
-        day: string,
-        kilogram: number,
-        calories: number,
-        dataKey?: number | undefined
-    }[],  // Ajout des crochets pour indiquer un tableau
-    averageSessions: {
-        day: number,
-        sessionLength: number
-    }[],  // Ajout du type averageSessions
-    skillsKind: {
-        [key: number]: string
-    },    // Ajout du type skillsKind
-    skillsData: {
-        value: number,
-        kind: number
-    }[],  // Ajout du type skillsData
-    score: number  // Ajout du type score
-}
-
-function App({userId}) {
-    const { loading, data, error } = useUserData({userId: userId, mocked: false})
+function App({userId}: {userId: number}) {
+    const { data, error } = useUserData({userId: userId, mocked: false})
 
     //Early return on error
     if (error?.includes("404")) {
@@ -46,8 +18,6 @@ function App({userId}) {
     if (!data) {
         return <div>Chargement...</div>
     }
-
-
 
     return (
         <>
