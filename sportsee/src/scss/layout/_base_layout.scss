@@ -1,0 +1,166 @@
+@use "../utils/colours";
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.header__menu {
+  background-color: colours.$black-background;
+
+  height: 9.5vh;
+  padding: 2vw 6vw 2vw 2vw;
+
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  & img {
+    height: 6vh;
+  }
+
+  & ul {
+    color: colours.$white-point;
+    font-weight: 500;
+    font-size: 2.25vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+main {
+  display: flex;
+
+  & .leftbar{
+    position: relative;
+
+    background-color: colours.$black-background;
+    width: 8vw;
+    height: calc(100vh - 9.5vh);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    &__badges{
+      color: colours.$white-point;
+
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &> ul{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &> li{
+          cursor: pointer;
+
+          & > img {
+            width: 4.5vw;
+          }
+        }
+      }
+
+    }
+
+    &__copyright {
+      position: absolute;
+      bottom: 56px;
+      color: colours.$white-point;
+      font-size: 1vh;
+      writing-mode: sideways-lr;
+    }
+  }
+
+  .content{
+    flex: 1;
+    padding: 8vh 6vw;
+
+    display: flex;
+    flex-direction: column;
+
+    &__greetings {
+      height: 22vh;
+
+      & > .hello {
+        font-size: 4.5vh;
+        line-height: 2;
+        font-weight: 500;
+
+        & > .firstname {
+          color: colours.$orange-text;
+        }
+      }
+
+      & > .encouragement {
+        font-size: 1.125rem;
+      }
+    }
+
+    &__graphs {
+      flex: 1;
+
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 24px;
+
+      & > * {
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      &--dailyActivity {
+        background-color: colours.$grey-background;
+        grid-column: 1 / 10;
+        grid-row: 1 / 2;
+
+        padding: 24px;
+      }
+
+      &--stats {
+        grid-column: 10 / 13;
+        grid-row: 1 / 3;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+
+      }
+
+      &--averageSessions {
+        position:relative;
+        background-color: colours.$red-graph;
+        grid-column: 1 / 4;
+        grid-row: 2 / 3;
+
+        padding: 24px 24px 24px 24px;
+      }
+
+      &--skills {
+        background-color: colours.$black-dataLabel;
+        grid-column: 4 / 7;
+        grid-row: 2 / 3;
+      }
+
+      &--score {
+        position: relative;
+        background-color: colours.$grey-background;
+        grid-column: 7 / 10;
+        grid-row: 2 / 3;
+      }
+    }
+  }
+}

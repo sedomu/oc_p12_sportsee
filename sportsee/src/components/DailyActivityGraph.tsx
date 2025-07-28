@@ -1,0 +1,74 @@
+import {
+    Bar,
+    BarChart,
+    CartesianGrid, ResponsiveContainer, Tooltip,
+    XAxis,
+    YAxis
+} from "recharts";
+import { colours } from "./colours";
+
+type Props = {
+    lastSessions: {
+        day: string,
+        kilogram: number,
+        calories: number,
+        dataKey?: number | undefined // Optional car ajouté dans la fonction
+    }[]
+}
+
+export default function DailyActivityGraph({lastSessions}: Props) {
+
+    const sessionsWithKeys = lastSessions.map((session, index) => ({
+        ...session,
+        dataKey: index + 1
+    }));
+
+
+    const CustomTooltip = ({ active, payload }: any) => {
+        if (active && payload && payload.length) {
+            return (
+                <div style={{
+                    backgroundColor: colours.redTootltip,
+                    color: colours.whitePoint,
+                    fontSize: "0.5rem",
+                    lineHeight: "1.5rem",
+                    textAlign: "center",
+                    padding: '8px',
+                    border: 'none'
+                }}>
+                    <p>{`${payload[0].payload.kilogram} kg`}</p>
+                    <p>{`${payload[0].payload.calories} kCal`}</p>
+                </div>
+            );
+        }
+        return null;
+    };
+
+
+    const MyChart = () => (
+        <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={sessionsWithKeys} margin={{top: 24, right: 0, left: 0, bottom: 16}} syncId="anyId" barGap={8} barSize={8}>
+                <XAxis dataKey="dataKey" tickLine={false} stroke={colours.greyText} tickMargin={16}/>
+                <YAxis yAxisId="right" stroke={colours.greyText} orientation="right" dataKey="kilogram" domain={["dataMin - 2", "dataMax + 2"]} allowDecimals={false} tickLine={false} axisLine={false} interval={0} tickMargin={24}/>
+                <CartesianGrid horizontal={true} vertical={false} stroke={colours.greyGrid} strokeDasharray="2 2" strokeWidth={"1px"} syncWithTicks={true}/>
+                <Bar dataKey="kilogram" fill={colours.black} radius={[3, 3, 0, 0]} yAxisId="right"/>
+                <Bar dataKey="calories" fill={colours.orange} radius={[3, 3, 0, 0]}/>
+                <Tooltip
+                    cursor={{fill: colours.greyCursor}}
+                    content={<CustomTooltip/>}
+                />
+            </BarChart>
+        </ResponsiveContainer>
+    );
+
+    return <>
+        <div className="content__graphs--dailyActivity-title">
+            <div>Activité quotidienne</div>
+            <ul>
+                <li><svg height={8} width={8}><circle cx="4" cy="4" r="4" fill={colours.black}></circle></svg>Poids (kg)</li>
+                <li><svg height={8} width={8}><circle cx="4" cy="4" r="4" fill={colours.orange}></circle></svg>Calories brûlées (kCal)</li>
+            </ul>
+        </div>
+        {MyChart()}
+    </>
+}

@@ -1,0 +1,118 @@
+@use "../utils/colours";
+
+// graph fonts
+tspan {
+  font-size: 1.25vh;
+}
+
+.recharts-layer.recharts-polar-angle-axis.angleAxis {
+  max-width: 50%;
+}
+
+.content__graphs--dailyActivity-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: colours.$black-graphLabel;
+
+  & > ul {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    color: colours.$grey-graphLabel;
+    font-size: 1.25vh;
+
+    & > li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+.content__graphs--stats {
+  &-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 1.5vw;
+    background-color: colours.$grey-background;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    & > img {
+      width: 4vw;
+    }
+  }
+
+  &-data{
+    &-figure{
+      color: colours.$black-dataLabel;
+      font-weight: 700;
+      font-size: 2vh;
+      line-height: 2.25vh;
+    }
+    &-intake {
+      color: colours.$grey-graphLabel;
+      font-size: 1.25vh;
+      line-height: 2vh;
+    }
+  }
+}
+
+.content__graphs--averageSessions {
+  color: colours.$white-transparentText;
+}
+
+.content__graphs--averageSessions-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: colours.$black-overlay;
+}
+
+.content__graphs--score {
+  &-title{
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    color: colours.$black-graphLabel;
+  }
+
+  &-text{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    color: colours.$grey-graphLabel;
+    text-align: center;
+
+    &-figure{
+      color: colours.$black-dataLabel;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+  }
+
+  &-circle{
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    > svg {
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
