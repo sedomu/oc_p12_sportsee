@@ -7,7 +7,7 @@ import {useUserData} from "../hooks/useUserData.tsx";
 import NotFoundContent from "./NotFoundContent.tsx";
 
 export default function UserContent({userId}: {userId: number}) {
-    const { data, error } = useUserData({userId: userId, mocked: false})
+    const { data, error } = useUserData({userId: userId, mocked: true})
 
     //Early return on error
     if (error?.includes("404")) {
