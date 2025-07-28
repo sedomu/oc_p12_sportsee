@@ -10,7 +10,7 @@ export default function StatsGraph({iconSrc, figure, unit, intakeText}: Props) {
 
     return <>
         <div className="content__graphs--stats-container">
-            <img className="content__graphs--stats-icon" src={iconSrc}></img>
+            <img className="content__graphs--stats-icon" src={iconSrc} alt={intakeText + " icon"}></img>
             <div className="content__graphs--stats-data">
                 <div className="content__graphs--stats-data-figure">{figureText}</div>
                 <div className="content__graphs--stats-data-intake">{intakeText}</div>

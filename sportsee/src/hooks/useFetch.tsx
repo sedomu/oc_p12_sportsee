@@ -14,6 +14,7 @@ export default function useFetch<T = any>(url: string) {
                 const response = await fetch(url);
 
                 if (!response.ok) {
+                    // noinspection ExceptionCaughtLocallyJS
                     throw new Error(`Erreur ${response.status} : ${response.statusText}`);
                 }
 

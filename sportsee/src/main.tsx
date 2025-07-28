@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
-import NotFound from "./NotFound.tsx"
+import NotFound from "./pages/NotFound.tsx"
 import {BrowserRouter, Route, Routes, useParams} from "react-router"
 
 function AppWithParams() {
