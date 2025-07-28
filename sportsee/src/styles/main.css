@@ -61,8 +61,11 @@ body {
 .header__menu {
   background-color: #020203;
   height: 9.5vh;
+  width: 100%;
   padding: 2vw 6vw 2vw 2vw;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  position: fixed;
+  z-index: 1;
 }
 .header__menu img {
   height: 6vh;
@@ -87,6 +90,8 @@ main .leftbar {
   position: relative;
   background-color: #020203;
   width: 8vw;
+  position: fixed;
+  margin-top: 9.5vh;
   height: 90.5vh;
   display: flex;
   flex-direction: column;
@@ -119,6 +124,8 @@ main .leftbar__copyright {
   writing-mode: sideways-lr;
 }
 main .content {
+  margin-top: 9.5vh;
+  margin-left: 8vw;
   flex: 1;
   padding: 8vh 6vw;
   display: flex;
