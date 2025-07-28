@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
-import NotFound from "./pages/NotFound.tsx"
 import {BrowserRouter, Route, Routes, useParams} from "react-router"
 
 function AppWithParams() {
@@ -16,7 +15,7 @@ createRoot(document.getElementById('root')!).render(
       <StrictMode>
           <Routes>
               <Route path={"/user/:userId"} element={<AppWithParams/>} />
-              <Route path={"/*"} element={<NotFound/>} />
+              <Route path={"/*"} element={<App userId={0} unknownRoute={true}/>} />
           </Routes>
       </StrictMode>
   </BrowserRouter>
