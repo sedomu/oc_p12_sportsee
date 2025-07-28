@@ -1,5 +1,14 @@
 @use "../utils/colours";
 
+// graph fonts
+tspan {
+  font-size: 1.25vh;
+}
+
+.recharts-layer.recharts-polar-angle-axis.angleAxis {
+  max-width: 50%;
+}
+
 .content__graphs--dailyActivity-title {
   display: flex;
   justify-content: space-between;
@@ -11,7 +20,7 @@
     gap: 16px;
     justify-content: flex-end;
     color: colours.$grey-graphLabel;
-    font-size: 0.874rem;
+    font-size: 1.25vh;
 
     & > li {
       display: flex;
@@ -27,25 +36,29 @@
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
-    padding: 24px;
+    padding: 1.5vw;
     background-color: colours.$grey-background;
 
     display: flex;
     align-items: center;
     gap: 24px;
+
+    & > img {
+      width: 4vw;
+    }
   }
 
   &-data{
     &-figure{
       color: colours.$black-dataLabel;
       font-weight: 700;
-      font-size: 1.25rem;
-      line-height: 1.5rem;
+      font-size: 2vh;
+      line-height: 2.25vh;
     }
     &-intake {
       color: colours.$grey-graphLabel;
-      font-size: 0.875rem;
-      line-height: 1.5rem;
+      font-size: 1.25vh;
+      line-height: 2vh;
     }
   }
 }

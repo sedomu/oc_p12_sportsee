@@ -8,15 +8,19 @@ body {
 .header__menu {
   background-color: colours.$black-background;
 
-  height: 88px;
-  padding: 24px 88px 24px 16px;
+  height: 9.5vh;
+  padding: 2vw 6vw 2vw 2vw;
 
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  & img {
+    height: 6vh;
+  }
 
   & ul {
     color: colours.$white-point;
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 2.25vh;
 
     display: flex;
     justify-content: space-between;
@@ -37,8 +41,8 @@ main {
     position: relative;
 
     background-color: colours.$black-background;
-    width: 120px;
-    height: calc(100vh - 88px);
+    width: 8vw;
+    height: calc(100vh - 9.5vh);
 
     display: flex;
     flex-direction: column;
@@ -60,6 +64,10 @@ main {
 
         &> li{
           cursor: pointer;
+
+          & > img {
+            width: 4.5vw;
+          }
         }
       }
 
@@ -69,23 +77,23 @@ main {
       position: absolute;
       bottom: 56px;
       color: colours.$white-point;
-      font-size: 0.75rem;
+      font-size: 1vh;
       writing-mode: sideways-lr;
     }
   }
 
   .content{
     flex: 1;
-    padding: 64px 88px;
+    padding: 8vh 6vw;
 
     display: flex;
     flex-direction: column;
 
     &__greetings {
-      height: 176px;
+      height: 22vh;
 
       & > .hello {
-        font-size: 3rem;
+        font-size: 4.5vh;
         line-height: 2;
         font-weight: 500;
 

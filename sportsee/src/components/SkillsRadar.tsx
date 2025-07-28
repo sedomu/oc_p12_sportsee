@@ -33,9 +33,9 @@ export default function SkillsRadar({skillsKind, skillsData}: Props) {
 
     return <>
         <ResponsiveContainer width="100%" height="100%">
-            <RadarChart data={formattedData} margin={{right: 40, left: 40}}>
+            <RadarChart data={formattedData} margin={{right: 40, left: 40}} outerRadius="70%">
                 <PolarGrid radialLines={false}/>
-                <PolarAngleAxis dataKey={"kindToDisplay"} axisLine={false} tick={{ fill: colours.whitePoint, fontSize: "0.75rem" }} />
+                <PolarAngleAxis dataKey={"kindToDisplay"} axisLine={false} tick={{ fill: colours.whitePoint }} orientation={"outer"}/>
                 <Radar dataKey={"value"} stroke="none" fill={colours.redRadar} fillOpacity={0.7} activeDot={false} />
             </RadarChart>
         </ResponsiveContainer>

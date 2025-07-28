@@ -60,14 +60,17 @@ body {
 
 .header__menu {
   background-color: #020203;
-  height: 88px;
-  padding: 24px 88px 24px 16px;
+  height: 9.5vh;
+  padding: 2vw 6vw 2vw 2vw;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.header__menu img {
+  height: 6vh;
 }
 .header__menu ul {
   color: #ffffff;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 2.25vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,8 +86,8 @@ main {
 main .leftbar {
   position: relative;
   background-color: #020203;
-  width: 120px;
-  height: calc(100vh - 88px);
+  width: 8vw;
+  height: 90.5vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -105,24 +108,27 @@ main .leftbar__badges > ul {
 main .leftbar__badges > ul > li {
   cursor: pointer;
 }
+main .leftbar__badges > ul > li > img {
+  width: 4.5vw;
+}
 main .leftbar__copyright {
   position: absolute;
   bottom: 56px;
   color: #ffffff;
-  font-size: 0.75rem;
+  font-size: 1vh;
   writing-mode: sideways-lr;
 }
 main .content {
   flex: 1;
-  padding: 64px 88px;
+  padding: 8vh 6vw;
   display: flex;
   flex-direction: column;
 }
 main .content__greetings {
-  height: 176px;
+  height: 22vh;
 }
 main .content__greetings > .hello {
-  font-size: 3rem;
+  font-size: 4.5vh;
   line-height: 2;
   font-weight: 500;
 }
@@ -177,6 +183,14 @@ main .content__graphs--score {
   grid-row: 2/3;
 }
 
+tspan {
+  font-size: 1.25vh;
+}
+
+.recharts-layer.recharts-polar-angle-axis.angleAxis {
+  max-width: 50%;
+}
+
 .content__graphs--dailyActivity-title {
   display: flex;
   justify-content: space-between;
@@ -188,7 +202,7 @@ main .content__graphs--score {
   gap: 16px;
   justify-content: flex-end;
   color: #74798C;
-  font-size: 0.874rem;
+  font-size: 1.25vh;
 }
 .content__graphs--dailyActivity-title > ul > li {
   display: flex;
@@ -201,22 +215,25 @@ main .content__graphs--score {
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
-  padding: 24px;
+  padding: 1.5vw;
   background-color: #FBFBFB;
   display: flex;
   align-items: center;
   gap: 24px;
 }
+.content__graphs--stats-container > img {
+  width: 4vw;
+}
 .content__graphs--stats-data-figure {
   color: #282D30;
   font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.5rem;
+  font-size: 2vh;
+  line-height: 2.25vh;
 }
 .content__graphs--stats-data-intake {
   color: #74798C;
-  font-size: 0.875rem;
-  line-height: 1.5rem;
+  font-size: 1.25vh;
+  line-height: 2vh;
 }
 
 .content__graphs--averageSessions {

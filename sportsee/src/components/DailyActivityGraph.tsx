@@ -47,9 +47,9 @@ export default function DailyActivityGraph({lastSessions}: Props) {
 
     const MyChart = () => (
         <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={sessionsWithKeys} margin={{top: 32, right: 0, left: 0, bottom: 32}} syncId="anyId" barGap={8} barSize={8}>
-                <XAxis dataKey="dataKey" tickLine={false} stroke={colours.greyText} tickMargin={24}/>
-                <YAxis yAxisId="right" stroke={colours.greyText} orientation="right" dataKey="kilogram" domain={["dataMin - 2", "dataMax + 2"]} allowDecimals={false} tickLine={false} axisLine={false} interval={0} tickMargin={32}/>
+            <BarChart data={sessionsWithKeys} margin={{top: 24, right: 0, left: 0, bottom: 16}} syncId="anyId" barGap={8} barSize={8}>
+                <XAxis dataKey="dataKey" tickLine={false} stroke={colours.greyText} tickMargin={16}/>
+                <YAxis yAxisId="right" stroke={colours.greyText} orientation="right" dataKey="kilogram" domain={["dataMin - 2", "dataMax + 2"]} allowDecimals={false} tickLine={false} axisLine={false} interval={0} tickMargin={24}/>
                 <CartesianGrid horizontal={true} vertical={false} stroke={colours.greyGrid} strokeDasharray="2 2" strokeWidth={"1px"} syncWithTicks={true}/>
                 <Bar dataKey="kilogram" fill={colours.black} radius={[3, 3, 0, 0]} yAxisId="right"/>
                 <Bar dataKey="calories" fill={colours.orange} radius={[3, 3, 0, 0]}/>
