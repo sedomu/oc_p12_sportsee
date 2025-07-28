@@ -9,9 +9,13 @@ body {
   background-color: colours.$black-background;
 
   height: 9.5vh;
+  width: 100%;
   padding: 2vw 6vw 2vw 2vw;
 
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  position: fixed;
+  z-index: 1;
 
   & img {
     height: 6vh;
@@ -42,6 +46,8 @@ main {
 
     background-color: colours.$black-background;
     width: 8vw;
+    position: fixed;
+    margin-top: 9.5vh;
     height: calc(100vh - 9.5vh);
 
     display: flex;
@@ -83,6 +89,9 @@ main {
   }
 
   .content{
+    margin-top: 9.5vh;
+    margin-left: 8vw;
+
     flex: 1;
     padding: 8vh 6vw;
 
