@@ -5,11 +5,13 @@ import {
     USER_PERFORMANCE
 } from "../data/mocked-data";
 
+import { APPCONFIG } from "../appConfig.ts";
+
 import { useState, useEffect } from "react";
 import useNormalisedData, {
     type NormalisedData
 } from "./useNormalisedData";
-import useFetch from "./useFetch.tsx";
+import useConditionalFetch from "./useConditionalFetch.ts";
 
 type Props = {
     userId: number;
@@ -17,6 +19,50 @@ type Props = {
 };
 
 type UserLike = { id?: number; userId?: number };
+
+type MainData = {
+    data: {
+            id: number;
+            userInfos: {
+                firstName: string;
+                lastName: string;
+                age: number;
+            }
+            ;
+            todayScore ? : number;
+            score ? : number;
+            keyData: {
+                calorieCount: number;
+                proteinCount: number;
+                carbohydrateCount: number;
+                lipidCount: number;
+            }
+            ;
+    }
+};
+
+type ActivityData = {
+    data: {
+        userId: number;
+        sessions: { day: string; kilogram: number; calories: number }[];
+    }
+};
+
+type SessionsData = {
+    data: {
+        userId: number;
+        sessions: { day: number; sessionLength: number }[];
+    }
+};
+
+type PerformanceData = {
+    data: {
+        userId: number;
+        kind: Record<number, string>;
+        data: { value: number; kind: number }[];
+    }
+};
+
 
 function filterUser<T extends UserLike>(data: T[], userId: number): T | undefined {
     return data.find(user => user.id === userId || user.userId === userId);
@@ -34,11 +80,17 @@ export function useUserData({
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    // API fetchs
-    const { data: mainData, loading: mainLoading, error: mainError } = useFetch(`http://localhost:3000/user/${userId}`);
-    const { data: activityData, loading: activityLoading, error: activityError } = useFetch(`http://localhost:3000/user/${userId}/activity`);
-    const { data: sessionsData, loading: sessionsLoading, error: sessionsError } = useFetch(`http://localhost:3000/user/${userId}/average-sessions`);
-    const { data: performanceData, loading: performanceLoading, error: performanceError } = useFetch(`http://localhost:3000/user/${userId}/performance`);
+    const { data: mainData, loading: mainLoading, error: mainError } =
+        useConditionalFetch<MainData>(`${APPCONFIG.server}/user/${userId}`, mocked);
+
+    const { data: activityData, loading: activityLoading, error: activityError } =
+        useConditionalFetch<ActivityData>(`${APPCONFIG.server}/user/${userId}/activity`, mocked);
+
+    const { data: sessionsData, loading: sessionsLoading, error: sessionsError } =
+        useConditionalFetch<SessionsData>(`${APPCONFIG.server}/user/${userId}/average-sessions`, mocked);
+
+    const { data: performanceData, loading: performanceLoading, error: performanceError } =
+        useConditionalFetch<PerformanceData>(`${APPCONFIG.server}/user/${userId}/performance`, mocked);
 
     useEffect(() => {
         if (mocked) {
@@ -81,8 +133,7 @@ export function useUserData({
                 setLoading(false);
             }
         }
-    }, [
-        mocked,
+    }, [  mocked,
         userId,
         mainData,
         activityData,
@@ -95,8 +146,7 @@ export function useUserData({
         mainError,
         activityError,
         sessionsError,
-        performanceError
-    ]);
+        performanceError]);
 
     return { data, loading, error };
 }

@@ -29,31 +29,25 @@ développé avec React et communique via une API avec le backend basé sur Node.
 Repo du backend: [OpenClassrooms-Student-Center / SportSee](https://github.com/OpenClassrooms-Student-Center/SportSee)
 
 Le frontend peut s'utiliser avec les données mockées au sein du repo
-(par défaut) ou avec la connexion à l'API (valeur à modifier).
+(par défaut) ou avec la connexion à l'API (valeur à modifier dans le fichier de configuration).
 
-### Lancer l'application (avec des données mockées)
+### Lancer l'application
 
-_Dans le répertoire src/pages/, le composant **UserContent** fait un appel au 
-hook **useUserData** avec le paramètre **mocked = true** par défaut._
+#### Option 1 : Utiliser les données mockées
 
-Pour lancer l'application React, exécutez la commande suivante :
+_Le fichier de configuration src/appConfig.ts, contient le paramètre **mocked: true** par défaut. Il récupèrera les données mockées dans **/src/data/mocked-data.ts**_
 
-```bash
-    npm run dev
-```
-
-Cette commande utilisera Vite pour démarrer une application de développement en mode "hot reload".
-
-### Lancer l'application (récupération des données par API)
+#### Option 2 : Récupération des données par API)
 
 Cloner et lancer le backend (voir repo [OpenClassrooms-Student-Center / 
-SportSee](https://github.com/OpenClassrooms-Student-Center/SportSee))
+SportSee](https://github.com/OpenClassrooms-Student-Center/SportSee)).
 
 Le backend lancé va écouter par défaut le port **3000** sur **localhost**.
 
-Dans le répertoire src/pages/, modifier le code de manière à ce que le 
-composant **UserContent** fasse appel au hook **useUserData** avec le 
-paramètre **mocked = true**.
+Modifier le fichier de configuration **src/appConfig.ts**: passer le paramètre **mocked: false**.
+_Les données seront récupérées par API sur le serveur indiqué dans le fichier de configuration : **server: "http://localhost:3000"** par défaut_
+
+#### Lancer l'application React
 
 Pour lancer l'application React, exécutez la commande suivante :
 
@@ -102,7 +96,7 @@ Cette application suit une structure modulaire en React + Vite + TypeScript. Ci-
 
 #### 📊 Exemple de flux des hooks personnalisés (dashboard d'un utilisateur, utilisation de l'API pour récupérer les données)
 
-`<UserContent /> ⇒ useUserData ⇒ useFetch` _appel des données_
+`<UserContent /> ⇒ useUserData ⇒ useConditionalFetch ⇒ useFetch` _appel des données_
 
 `<UserContent /> ⇒ useUserData ⇒ useNormalisedData` _mise en forme des 
 données récupérées de l'API (ou mockées)_

@@ -5,9 +5,10 @@ import SkillsRadar from "../components/SkillsRadar.tsx";
 import ScoreGraph from "../components/ScoreGraph.tsx";
 import {useUserData} from "../hooks/useUserData.tsx";
 import NotFoundContent from "./NotFoundContent.tsx";
+import {APPCONFIG} from "../appConfig.ts";
 
 export default function UserContent({userId}: {userId: number}) {
-    const { data, error } = useUserData({userId: userId, mocked: true})
+    const { data, error } = useUserData({userId: userId, mocked: APPCONFIG.mocked});
 
     //Early return on error
     if (error?.includes("404")) {
