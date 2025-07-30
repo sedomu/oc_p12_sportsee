@@ -1,4 +1,4 @@
 export const APPCONFIG = {
-    mocked: false,
+    mocked: true,
     server: "http://localhost:3000",
 }
