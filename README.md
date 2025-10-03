@@ -1,163 +1,166 @@
-# OpenClassrooms - Projet 12 SportSee
+# OpenClassrooms – Project 12 SportSee
 
-## Description
+## 📌 Description
 
-Code source du Projet 12 - Développez un tableau de bord d'analytics avec React du parcours Développeur Front-end d'OpenClassrooms.
+Source code of **Project 12 – Develop an Analytics Dashboard with React**, completed as part of the **OpenClassrooms JavaScript React Developer path**.
 
-Selon les requirements du projet au stade actuel, le frontend est conçu pour 
-correctement s'afficher sur des résolutions d'écran de 1024x780px et au-delà.
+This project consists of **developing an analytics dashboard for sports coaching**, integrating **interactive charts and diagrams** using React.
+The goal is to **visualize and analyze sports data** through a modern, responsive user interface.
+
+Planned pages and components:
+
+* User profile page with charts and statistics
+* Graphical components: daily activity, performance, average sessions, skills radar, score
+
+⚠️ **Educational project:** This repository was created for training purposes. It **is not intended for production**.
+
+---
+
+## 🎯 Learning Objectives
+
+* Develop **advanced graphical components** with JavaScript libraries (Recharts, D3, etc.)
+* Interact with a **web service** to fetch and display data (REST API or mocks)
+* Structure a modern front-end application with **React**, **React Router**, and **TypeScript**
+* Ensure **code quality and documentation** using JSDoc, prop types, and ESLint
+* Master the integration of **SASS** and CSS animations for performant visual rendering
+
+---
+
+## 📦 Deliverables & Project Structure
+
+* **React components**: modular and reusable, in `src/components/`
+* **Pages**: in `src/pages/`, each representing a dashboard view or static page
+* **React Router routing**: defined in `src/App.tsx`
+* **Custom hooks**: in `src/hooks/` to handle business logic and data fetching (mock or API)
+* **Mocked data**: in `src/data/` for development without a backend
+* **SASS styles**: in `src/scss/` and `src/styles/`, with variables and modular organization
+
+The front-end is currently designed to display correctly on screens **1024x780px and larger**.
 
 ![1024x780 screenshot](./sportsee/public/assets/screenshot_1024x780.png)
-_page de l'utilisateur 12, résolution 1024x780px_
+*user page 12, resolution 1024x780px*
 
-[Live preview](https://oc-p12-sportsee-git-dev-muczs-projects.vercel.app/) - site en version 
-mockée hébergée sur Vercel
-
-## Installation
-
-Pour installer les dépendances nécessaires, utilisez la commande suivante dans le terminal :
-
-```bash
-    npm install
-```
-
-## Utilisation
-
-L'application suit une architecture découplée: ce repo contient le frontend 
-développé avec React et communique via une API avec le backend basé sur Node.js.
-
-Repo du backend: [OpenClassrooms-Student-Center / SportSee](https://github.com/OpenClassrooms-Student-Center/SportSee)
-
-Le frontend peut s'utiliser avec les données mockées au sein du repo
-(par défaut) ou avec la connexion à l'API (valeur à modifier dans le fichier de configuration).
-
-### Lancer l'application
-
-#### Option 1 : Utiliser les données mockées
-
-_Le fichier de configuration src/appConfig.ts, contient le paramètre **mocked: true** par défaut. Il récupèrera les données mockées dans **/src/data/mocked-data.ts**_
-
-#### Option 2 : Récupération des données par API)
-
-Cloner et lancer le backend (voir repo [OpenClassrooms-Student-Center / 
-SportSee](https://github.com/OpenClassrooms-Student-Center/SportSee)).
-
-Le backend lancé va écouter par défaut le port **3000** sur **localhost**.
-
-Modifier le fichier de configuration **src/appConfig.ts**: passer le paramètre **mocked: false**.
-_Les données seront récupérées par API sur le serveur indiqué dans le fichier de configuration : **server: "http://localhost:3000"** par défaut_
-
-#### Lancer l'application React
-
-Pour lancer l'application React, exécutez la commande suivante :
-
-```bash
-    npm run dev
-```
-
-Cette commande utilisera Vite pour démarrer une application de développement
-
-### Compiler le projet
-
-Pour compiler votre projet en production, utilisez la commande suivante :
-
-```bash
-    npm run build
-```
-
-Cette commande générera un dossier `dist` contenant les fichiers compilés.
-
-## 🧭 Architecture de l'application
-
-Cette application suit une structure modulaire en React + Vite + TypeScript. Ci-dessous, une vue d’ensemble du fonctionnement global du code, depuis le point d’entrée jusqu’à l’affichage des données.
-
-### 🔹 1. Point d’entrée
-
-- `src/main.tsx` : initialise React et monte l’application dans le DOM via `<App />`.
-- `src/App.tsx` : composant racine qui configure la structure globale, le routing (`React Router`) et les composants de layout (ex. : header, sidebar).
-
-### 🔹 2. Routage
-
-- Géré dans `App.tsx` avec `react-router`.
-- Chaque route appelle le composant de contenu correspondant dans `src/pages/`.
-
-### 🔹 3. Pages
-
-- Les composants dans `src/pages/` représentent des **contenus de page** (ex. : 
-  dashboard, page introuvable).
-- Elles consomment des **hooks** personnalisés et affichent des **composants UI**.
-
-### 🔹 4. Hooks personnalisés
-
-- Les hooks situés dans `src/hooks/` encapsulent la logique métier ou les appels aux données (mock ou API).
-- Ils sont utilisés dans les pages pour récupérer, formater ou filtrer les données.
+[Live preview](https://oc-p12-sportsee-git-dev-muczs-projects.vercel.app/) – mocked site hosted on Vercel
 
 ---
 
-#### 📊 Exemple de flux des hooks personnalisés (dashboard d'un utilisateur, utilisation de l'API pour récupérer les données)
+## 🏗 Application Architecture
 
-`<UserContent /> ⇒ useUserData ⇒ useConditionalFetch ⇒ useFetch` _appel des données_
+### 1. Entry Point
 
-`<UserContent /> ⇒ useUserData ⇒ useNormalisedData` _mise en forme des 
-données récupérées de l'API (ou mockées)_
+* `src/main.tsx`: initializes React and mounts the app in the DOM
+* `src/App.tsx`: root component, configures routing and page components
 
-_Affichage des données :_
+### 2. Routing
+
+* Managed via **React Router** in `App.tsx`
+* Each route renders the corresponding component in `src/pages/`
+
+### 3. Pages
+
+* `src/pages/` contains main pages: dashboard, user profile, not found page
+* Pages consume **custom hooks** to fetch and format data
+
+### 4. Custom Hooks
+
+* `src/hooks/` encapsulates business logic and data calls
+* Example flow for the dashboard:
+
 ```
-<UserContent />
-    <DailyActivityGraph />
-    <StatsGraph />
-    <AverageSessions />
-    <SkillsRadar />
-    <ScoreGraph />
+<UserContent /> ⇒ useUserData ⇒ useConditionalFetch ⇒ useFetch
+<UserContent /> ⇒ useUserData ⇒ useNormalisedData
 ```
 
-_Les données remontent vers et sont redistribuées par \<UserContent /> 
-auprès de chaque composant._
+* Data is redistributed to chart components: `<DailyActivityGraph />`, `<StatsGraph />`, `<AverageSessions />`, `<SkillsRadar />`, `<ScoreGraph />`
+
+### 5. UI Components
+
+* `src/components/` contains graphical and functional components
+* Props are passed from pages or parent components
+
+### 6. Styles
+
+* Managed via **SASS** and modular CSS in `src/scss/` and `src/styles/`
 
 ---
 
-### 🔹 5. Données
+## 🛠 Tools & Methodologies
 
-- `src/data/` contient une source de données mockées.
-- Ces données sont typées et manipulées via les hooks.
+### 📦 Main Dependencies
 
-### 🔹 6. Composants
+* react
+* react-dom
+* react-router
+* recharts
+* sass
 
-- `src/components/` regroupe des composants UI **réutilisables**, souvent centrés sur une fonctionnalité (ex. : graphique radar, barre de score).
-- Ils reçoivent leurs props depuis les pages ou des composants parents.
+### 🛠 Development Dependencies
 
-### 🔹 7. Styles
+* vite
+* @vitejs/plugin-react
+* eslint + React plugins
+* prettier
+* typescript
+* @types/react
+* @types/react-dom
+* typescript-eslint
 
-- Les styles SCSS sont organisés dans `src/scss/` et `src/styles/`.
-- Utilisation de `Sass` pour gérer des variables et la structuration visuelle.
+### Other Tools
 
+* **Node.js** for dependency management and JavaScript execution
+* **Vite** for build and development environment
 
-## 🛠️ Technologies utilisées
+---
 
-### 🔧 Core
-- **TypeScript** `~5.8.3`
-- **React** `^19.1.0`
-- **React DOM** `^19.1.0`
-- **Vite** `^7.0.4`
-- **npm** (gestionnaire de paquets Node.js)
+## 🚀 Usage
 
-### 🎨 UI / Graphiques
-- **Recharts** `^3.1.0`
-- **Sass** `^1.89.2`
-- **React Router** `^7.7.1`
+*All commands should be executed from the project root folder `sportsee/`.*
 
-### 📦 Plugins / Outils Vite
-- **@vitejs/plugin-react** `^4.6.0`
+### Install
 
-### ✨ Typages
-- **@types/react** `^19.1.8`
-- **@types/react-dom** `^19.1.6`
+```bash
+npm install
+```
 
-### 🧹 Linting / Qualité de code
-- **ESLint** `^9.30.1`
-- **@eslint/js** `^9.30.1`
-- **eslint-plugin-react-hooks** `^5.2.0`
-- **eslint-plugin-react-refresh** `^0.4.20`
-- **typescript-eslint** `^8.35.1`
-- **globals** `^16.3.0`
+### Run the app (development mode)
 
+```bash
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+The compiled files are generated in the `dist` folder.
+
+### Preview the build
+
+```bash
+npm run preview
+```
+
+### Data
+
+#### Option 1: Use mocked data
+
+*The configuration file `src/appConfig.ts` contains the parameter **mocked: true** by default.
+It will fetch mocked data from `/src/data/mocked-data.ts`*
+
+#### Option 2: Fetch data from API
+
+Clone and run the backend (see repo [OpenClassrooms-Student-Center / SportSee](https://github.com/OpenClassrooms-Student-Center/SportSee)).
+
+The backend listens by default on port **3000** on **localhost**.
+
+Modify the configuration file `src/appConfig.ts`: set **mocked: false**.
+*Data will be fetched from the server specified in the config file: **server: "[http://localhost:3000](http://localhost:3000)"** by default*
+
+---
+
+## ⚠️ Disclaimer
+
+This project is a **mocked front-end application** developed for learning purposes.
+It **is not intended for production**, but demonstrates mastery of **React, React Router, TypeScript, SASS** and the integration of **interactive analytics graphics**.
