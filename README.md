@@ -1,5 +1,7 @@
 # OpenClassrooms – Project 12 SportSee
 
+> [README en français](./README_FR.md)
+
 ## 📌 Description
 
 Source code of **Project 12 – Develop an Analytics Dashboard with React**, completed as part of the **OpenClassrooms JavaScript React Developer path**.
