@@ -37,7 +37,7 @@ Planned pages and components:
 
 The front-end is currently designed to display correctly on screens **1024x780px and larger**.
 
-![1024x780 screenshot](./sportsee/public/assets/screenshot_1024x780.png)
+![1024x780 screenshot](Front/public/assets/screenshot_1024x780.png)
 *user page 12, resolution 1024x780px*
 
 [Live preview](https://oc-p12-sportsee-git-dev-muczs-projects.vercel.app/) – mocked site hosted on Vercel

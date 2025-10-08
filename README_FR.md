@@ -37,7 +37,7 @@ Pages et composants prévus :
 
 Selon les requirements du projet au stade actuel, le frontend est conçu pour correctement s'afficher sur des résolutions d'écran de 1024x780px et au-delà.
 
-![1024x780 screenshot](./sportsee/public/assets/screenshot_1024x780.png)
+![1024x780 screenshot](Front/public/assets/screenshot_1024x780.png)
 _page de l'utilisateur 12, résolution 1024x780px_
 
 [Live preview](https://oc-p12-sportsee-git-dev-muczs-projects.vercel.app/) - site en version
