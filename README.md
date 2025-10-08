@@ -1,5 +1,7 @@
 # OpenClassrooms – Project 12 SportSee
 
+> [README en français](./README_FR.md)
+
 ## 📌 Description
 
 Source code of **Project 12 – Develop an Analytics Dashboard with React**, completed as part of the **OpenClassrooms JavaScript React Developer path**.
@@ -37,7 +39,7 @@ Planned pages and components:
 
 The front-end is currently designed to display correctly on screens **1024x780px and larger**.
 
-![1024x780 screenshot](./sportsee/public/assets/screenshot_1024x780.png)
+![1024x780 screenshot](Front/public/assets/screenshot_1024x780.png)
 *user page 12, resolution 1024x780px*
 
 [Live preview](https://oc-p12-sportsee-git-dev-muczs-projects.vercel.app/) – mocked site hosted on Vercel
@@ -114,21 +116,25 @@ The front-end is currently designed to display correctly on screens **1024x780px
 
 ## 🚀 Usage
 
-*All commands should be executed from the project root folder `sportsee/`.*
+### Initialise front-end
 
-### Install
+> Note: this project uses **Node.js** (version 22.12 or later) and **npm**.
+
+> All commands should be executed from the project font-end root folder `Front/`.
+
+#### Install dependencies
 
 ```bash
 npm install
 ```
 
-### Run the app (development mode)
+#### Run the app (development mode)
 
 ```bash
 npm run dev
 ```
 
-### Build for production
+#### Build for production
 
 ```bash
 npm run build
@@ -136,22 +142,40 @@ npm run build
 
 The compiled files are generated in the `dist` folder.
 
-### Preview the build
+#### Preview the build
 
 ```bash
 npm run preview
 ```
 
-### Data
-
-#### Option 1: Use mocked data
+### Option 1: Use mocked data
 
 *The configuration file `src/appConfig.ts` contains the parameter **mocked: true** by default.
 It will fetch mocked data from `/src/data/mocked-data.ts`*
 
-#### Option 2: Fetch data from API
+### Option 2: Fetch data from API
 
-Clone and run the backend (see repo [OpenClassrooms-Student-Center / SportSee](https://github.com/OpenClassrooms-Student-Center/SportSee)).
+> Note: this project uses **Node.js** (version 22.12 or later) and **npm**.
+
+> All commands should be executed from the project back-end root folder `Back/`.
+
+#### Install dependencies
+
+```bash
+npm install
+```
+
+#### Run the app (development mode)
+
+```bash
+npm run dev
+```
+
+#### Run the app (production mode)
+
+```bash
+npm run start
+```
 
 The backend listens by default on port **3000** on **localhost**.
 

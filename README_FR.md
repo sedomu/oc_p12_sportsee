@@ -1,5 +1,7 @@
 # OpenClassrooms – Projet 12 SportSee
 
+> [README in english](./README.md)
+
 ## 📌 Description
 
 Code source du **Projet 12 – Développez un tableau de bord d’analytics avec React**, complété dans le cadre du **parcours Développeur d'application JavaScript React**.
@@ -37,7 +39,7 @@ Pages et composants prévus :
 
 Selon les requirements du projet au stade actuel, le frontend est conçu pour correctement s'afficher sur des résolutions d'écran de 1024x780px et au-delà.
 
-![1024x780 screenshot](./sportsee/public/assets/screenshot_1024x780.png)
+![1024x780 screenshot](Front/public/assets/screenshot_1024x780.png)
 _page de l'utilisateur 12, résolution 1024x780px_
 
 [Live preview](https://oc-p12-sportsee-git-dev-muczs-projects.vercel.app/) - site en version
@@ -115,21 +117,23 @@ mockée hébergée sur Vercel
 
 ## 🚀 Utilisation
 
-_Toutes les commandes doivent être exécutées depuis le dossier racine du projet `sportsee/`._
+> Important : ce projet utilise **Node.js** (version 22.12 ou plus récente) et **npm**.
 
-### Installation
+> Toutes les commandes doivent être exécutées depuis le dossier racine du front-end `Front/`._
+
+#### Installation des dépendances
 
 ```bash
 npm install
 ```
 
-### Lancer l’application (mode développement)
+#### Lancer l’application (mode développement)
 
 ```bash
 npm run dev
 ```
 
-### Compiler pour production
+#### Compiler pour production
 
 ```bash
 npm run build
@@ -137,22 +141,39 @@ npm run build
 
 Les fichiers compilés sont générés dans le dossier `dist`.
 
-### Prévisualiser le build
+#### Prévisualiser le build
 
 ```bash
 npm run preview
 ```
 
-### Données
-
-#### Option 1 : Utiliser les données mockées
+### Option 1 : Utiliser les données mockées
 
 _Le fichier de configuration `src/appConfig.ts`, contient le paramètre **mocked: true** par défaut. Il récupèrera les données mockées dans `/src/data/mocked-data.ts`_
 
-#### Option 2 : Récupération des données par API
+### Option 2 : Récupération des données par API
 
-Cloner et lancer le backend (voir repo [OpenClassrooms-Student-Center /
-SportSee](https://github.com/OpenClassrooms-Student-Center/SportSee)).
+> Important : ce projet utilise **Node.js** (version 22.12 ou plus récente) et **npm**.
+
+> Toutes les commandes doivent être exécutées depuis le dossier racine du back-end `Back/`._
+
+#### Installer les dépendances
+
+```bash
+npm install
+```
+
+#### Lancer le backend (développement)
+
+```bash
+npm run dev
+```
+
+#### Lancer le backend (production)
+
+```bash
+npm run start
+```
 
 Le backend lancé va écouter par défaut le port **3000** sur **localhost**.
 
