@@ -114,21 +114,25 @@ The front-end is currently designed to display correctly on screens **1024x780px
 
 ## 🚀 Usage
 
-*All commands should be executed from the project root folder `sportsee/`.*
+### Initialise front-end
 
-### Install
+> Note: this project uses **Node.js** (version 22.12 or later) and **npm**.
+
+> All commands should be executed from the project font-end root folder `Front/`.
+
+#### Install dependencies
 
 ```bash
 npm install
 ```
 
-### Run the app (development mode)
+#### Run the app (development mode)
 
 ```bash
 npm run dev
 ```
 
-### Build for production
+#### Build for production
 
 ```bash
 npm run build
@@ -136,22 +140,40 @@ npm run build
 
 The compiled files are generated in the `dist` folder.
 
-### Preview the build
+#### Preview the build
 
 ```bash
 npm run preview
 ```
 
-### Data
-
-#### Option 1: Use mocked data
+### Option 1: Use mocked data
 
 *The configuration file `src/appConfig.ts` contains the parameter **mocked: true** by default.
 It will fetch mocked data from `/src/data/mocked-data.ts`*
 
-#### Option 2: Fetch data from API
+### Option 2: Fetch data from API
 
-Clone and run the backend (see repo [OpenClassrooms-Student-Center / SportSee](https://github.com/OpenClassrooms-Student-Center/SportSee)).
+> Note: this project uses **Node.js** (version 22.12 or later) and **npm**.
+
+> All commands should be executed from the project back-end root folder `Back/`.
+
+#### Install dependencies
+
+```bash
+npm install
+```
+
+#### Run the app (development mode)
+
+```bash
+npm run dev
+```
+
+#### Run the app (production mode)
+
+```bash
+npm run start
+```
 
 The backend listens by default on port **3000** on **localhost**.
 
